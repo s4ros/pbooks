@@ -1,0 +1,36 @@
+OBJS = data.o phonedata.o pubdata.o book.o phonebook.o
+CC = g++
+CPPFLAGS = -Wall -g
+
+all: phonetest pubtest
+
+phonetest: phonetest.o $(OBJS)
+	$(CC) -o phonetest $(OBJS) -Wall -g
+
+pubtest: pubtest.o $(OBJS)
+	$(CC) -o pubtest $(OBJS) -Wall -g
+
+phonetest.o: phonetest.cc
+	$(CC) -c phonetest.cc -o phonetest.o -Wall -g
+
+data.o: data.cc data.h
+	$(CC) -c data.cc -o data.o -Wall -g
+
+phonedata.o: phonedata.cc phonedata.h
+	$(CC) -c phonedata.cc -o phonedata.o -Wall -g
+
+pubdata.o: pubdata.cc pubdata.h
+	$(CC) -c pubdata.cc -o pubdata.o -Wall -g
+
+book.o: book.cc book.h
+	$(CC) -c book.cc -o book.o -Wall -g
+
+phonebook.o: phonebook.cc phonebook.h
+	$(CC) -c phonebook.cc -o phonebook.o -Wall -g
+
+pubbook.o: pubbook.cc pubbook.h
+	$(CC) -c pubbook.cc -o pubbook.o -Wall -g
+
+clean:
+	rm -rf $(OBJS) phonetest phonebook.dat pubtest pubbook.dat
+
